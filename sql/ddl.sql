@@ -1,7 +1,11 @@
 --
--- creation of tables & insertion of data
--- susm20
+-- 2023-09-15
+-- susm20, creates and updates tables
 --
+
+drop database if exists indproj;
+
+create database indproj;
 
 use indproj;
 

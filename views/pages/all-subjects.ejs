@@ -1,0 +1,32 @@
+<%- include("../partials/header"); %>
+
+<h1>All Products</h1>
+
+<p>Here is a list of all the available categories.</p>
+
+<pre><%#= JSON.stringify(res, null, 4) %></pre>
+
+<table>
+    <tr>
+        <th>Produkter</th>
+        <th>Pris</th>
+        <th>Namn</th>
+        <th>Beskrivning</th>
+    </tr>
+<% for (const row of res) { %>
+    <tr>
+        <td><%= row.produktid %></td>
+        <td><%= row.pris %></td>
+        <td><%= row.namn %></td>
+        <td><%= row.beskrivning %></td>
+        <td>
+            <a href="/eshop/update/<%= row.produktid %>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            <a href="/eshop/delete/<%= row.produktid %>"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+        </td>
+    </tr>
+<% }; %>
+</table>
+
+<%- include("../partials/footer"); %>
+
+
