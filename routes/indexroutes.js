@@ -7,7 +7,7 @@ const indproj = require("../src/indproj.js")
 module.exports = router;
 
 router.get("/", (req, res) => {
-    res.render("pages/index.ejs");
+    res.render("pages/index");
 });
 
 router.get("/courses", async (req, res) => {
