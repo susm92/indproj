@@ -10,10 +10,12 @@ router.get("/", (req, res) => {
     res.render("pages/index");
 });
 
-router.get("/courses", async (req, res) => {
+router.get("/subjects", async (req, res) => {
     let data = {};
 
     data.res = await indproj.showSubjects();
 
-    res.render("pages/all-subjects", data);
+    console.log(data);
+
+    res.render("pages/subjects", data);
 });

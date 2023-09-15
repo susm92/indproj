@@ -27,4 +27,7 @@ ON *.* TO 'user'@'localhost'
 WITH GRANT OPTION
 ;
 
+ALTER USER 'user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pass';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+
 FLUSH privileges;
