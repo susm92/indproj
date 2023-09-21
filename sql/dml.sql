@@ -5,6 +5,9 @@
 
 use indproj;
 
+--
+-- procedure to show all available subjects
+--
 DROP PROCEDURE IF EXISTS show_subjects;
 DELIMITER ;;
 CREATE PROCEDURE show_subjects()
@@ -14,20 +17,54 @@ END
 ;;
 DELIMITER ;
 
-call show_subjects();
+
+--
+-- Procedure to show specific courses
+--
+DROP PROCEDURE IF EXISTS show_courses;
+DELIMITER ;;
+CREATE PROCEDURE show_courses(
+    a_id int
+)
+BEGIN
+    SELECT * FROM courses WHERE subject_id = a_id;
+END
+;;
+DELIMITER ;
 
 
+--
+-- Procedure to show specific subject
+--
+DROP PROCEDURE IF EXISTS show_decks;
+DELIMITER ;;
+CREATE PROCEDURE show_decks(
+    a_id int
+)
+BEGIN
+    SELECT * FROM decks WHERE course_id = a_id;
+END
+;;
+DELIMITER ;
 
-CREATE USER 'user'@'localhost'
-IDENTIFIED BY 'pass'
-;
+--
+-- Procedure to show specific subject
+--
+DROP PROCEDURE IF EXISTS specific_deck;
+DELIMITER ;;
+CREATE PROCEDURE specific_deck(
+    a_id int
+)
+BEGIN
+    SELECT * FROM questions WHERE deck_id = a_id;
+END
+;;
+DELIMITER ;
 
-GRANT ALL PRIVILEGES
-ON *.* TO 'user'@'localhost'
-WITH GRANT OPTION
-;
-
-ALTER USER 'user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pass';
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
-
-FLUSH privileges;
+-- Just used to test querys
+-- call show_subjects();
+-- select * from courses;
+-- select * from subjects;
+-- call show_courses(2);
+select * from questions;
+select * from decks;

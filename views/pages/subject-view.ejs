@@ -1,27 +1,29 @@
 <%- include("../partials/header"); %>
 
-<h1>Choose a subject to work with</h1>
+<h1>All available courses</h1>
+
 
 <div class="main-cards">
     <% for (const row of res) { %>
         <div class="card-preview">
             <p>
-                <a href="subject-view/<%= row.subject_id%>"><%= row.name %></a>
+                <a href="/decks-view/<%= row.course_id %>"><%= row.name %></a>
             </p>
         </div>
     <% }; %>
 </div>
-
+        
 <!--
+
     <table>
         <% for (const row of res) { %>
             <tr>
-                <td><a href="subject-view/<%= row.subject_id%>"><%= row.name %></a></td>
+                <td><a href="subject-view/<%= row.course_id%>"><%= row.name %></a></td>
             </tr>
             <% }; %>
         </table>
--->
         
+-->
 <%- include("../partials/footer"); %>
 
 

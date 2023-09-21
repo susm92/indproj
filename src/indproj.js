@@ -1,7 +1,10 @@
 "use strict";
 
 module.exports = {
-    showSubjects: showSubjects
+    showSubjects: showSubjects,
+    showSubject: showSubject,
+    showDecks: showDecks,
+    specificDeck: specificDeck
 };
 
 const mysql  = require("promise-mysql");
@@ -32,6 +35,60 @@ async function showSubjects() {
     let res;
 
     res = await db.query(sql);
+    //console.log(res);
+    console.info(`SQL: ${sql} got ${res.length} rows.`);
+
+    return res[0];
+}
+
+/**
+ * Show all entries in the account table.
+ *
+ * @async
+ * @returns {RowDataPacket} Resultset from the query.
+ */
+async function showSubject(id) {
+    let sql = `CALL show_courses(?);`;
+    let res;
+
+    res = await db.query(sql, [id]);
+    //console.log(res);
+    console.info(`SQL: ${sql} got ${res.length} rows.`);
+
+    return res[0];
+}
+
+
+/**
+ * Show all entries in the account table.
+ *
+ * @async
+ * @returns {RowDataPacket} Resultset from the query.
+ */
+async function showDecks(id) {
+    let sql = `CALL show_decks(?);`;
+    let res;
+
+    res = await db.query(sql, [id]);
+    //console.log(res);
+    console.info(`SQL: ${sql} got ${res.length} rows.`);
+
+    return res[0];
+}
+
+
+
+/**
+ * Show all entries in the account table.
+ *
+ * @async
+ * @returns {RowDataPacket} Resultset from the query.
+ */
+async function specificDeck(id) {
+    let sql = `CALL specific_deck(?);`;
+    let res;
+
+    res = await db.query(sql, [id]);
     //console.log(res);
     console.info(`SQL: ${sql} got ${res.length} rows.`);
 

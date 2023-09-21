@@ -1,0 +1,15 @@
+<%- include("../partials/header"); %>
+
+<h1>Decks available</h1>
+
+<div class="main-cards">
+    <% for (const row of res) { %>
+        <div class="card-preview">
+            <p>
+                <a href="/specific-deck/<%= row.deck_id%>"><%= row.name %></a>
+            </p>
+        </div>
+    <% }; %>
+</div>
+					
+<%- include("../partials/footer"); %>

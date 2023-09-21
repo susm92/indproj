@@ -1,0 +1,29 @@
+.main-cards {
+    display: flex;
+    flex-wrap: wrap;
+    width: 732px;
+
+    gap: 10px;
+    gap: 10px 20px; /* row-gap column gap */
+    row-gap: 10px;
+    column-gap: 20px;
+    flex-grow: 4;
+}
+
+.card-preview {
+    width: 160px;
+    height: 90px;
+    border: 4px;
+    border-style: solid;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.card-preview > p > a {
+    color: #6b996b;
+}
+
+.card-preview > p {
+    padding: 10px;
+}
