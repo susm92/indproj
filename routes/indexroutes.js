@@ -2,6 +2,7 @@
 
 const express = require("express");
 const router = express.Router();
+const session = require('express-session');
 const indproj = require("../src/indproj.js")
 
 module.exports = router;
@@ -58,7 +59,7 @@ router.get("/specific-deck/:id", async (req, res) => {
 
     data.res = await indproj.specificDeck(id)
 
-    console.log(data);
+    console.log(data); 
 
     res.render("pages/specific-deck", data);
 });

@@ -1,24 +1,29 @@
 <%- include("../partials/header"); %>
 
-<script>
-    let index=1;
-
-    function nextQuestion() {
-        index++;
-    }
-
-</script>
-
 <h1></h1>
 
-    <div class="main-cards">
-        <div class="card-preview">
-            <p>
-                <%= res[index].question_text %>
-            </p>
-        </div>
+<script>
+</script>
+
+<div class="main-question card" onclick="this.classList.toggle('flipcard')">
+    <div class="questions-preview front">
+        <p>
+        <%= res[0].question_text %>
+      </p>
     </div>
-        
-        <button class="nextBTN" onclick="nextQuestion()">>Next</button>
-        <button class="previousBTN">Previous</button>
+    <div class="questions-preview back">
+      <p>
+        <%= res[0].answer %>
+      </p>
+    </div>
+  </div>
+
+  
+  <div class="buttons">
+    <button class="pBTN" onclick="showQuestion('prev')">Previous</button>
+    <button class="nBTN" onclick="showQuestion('next')">Next</button>
+  </div>
+
+  <script src="../../src/prevNext.js"></script>
+    
 <%- include("../partials/footer"); %>
