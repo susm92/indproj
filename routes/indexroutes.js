@@ -54,7 +54,8 @@ router.get("/decks-view/:id", async (req, res) => {
 router.get("/specific-deck/:id", async (req, res) => {
     let id = req.params.id;
     let data = {
-        subject: id
+        subject: id,
+        indexCounter: 0
     };
 
     data.res = await indproj.specificDeck(id)

@@ -2,28 +2,54 @@
 
 <h1></h1>
 
+<% for (const row of res) { %>
+<div class="main-question card" onclick="classList.toggle('flipcard')">
+	<div class="questions-preview front">
+		<p><%= row.question_text %></p>
+	</div>
+	<div class="questions-preview back">
+		<p><%= row.answer %></p>
+	</div>
+</div>
+<% } %>
+
+<!--
+<div class="buttons">
+	<button class="pBTN" onclick="previousQuestion()">Previous</button>
+	<button class="nBTN" onclick="nextQuestion()">Next</button>
+</div>
+
 <script>
+	let indexCounter = 0;
+	
+	function toggleCard() {
+		const card = document.querySelector('.main-question');
+		card.classList.toggle('flipcard');
+		displayQuestion();
+	}
+	
+	function displayQuestion() {
+		const questionText = document.getElementById('questionText');
+		const answerText = document.getElementById('answerText');
+		
+		questionText.innerText = '<%= res[indexCounter].question_text %>';
+		answerText.innerText = '<%= res[indexCounter].answer %>';
+	}
+	
+	function nextQuestion() {
+		indexCounter = (indexCounter + 1) % <%= res.length %>;
+		displayQuestion();
+	}
+	
+	function previousQuestion() {
+		indexCounter = (indexCounter - 1 + <%= res.length %>) % <%= res.length %>;
+		displayQuestion();
+	}
+	
+	// Initial display
+	displayQuestion();
 </script>
-
-<div class="main-question card" onclick="this.classList.toggle('flipcard')">
-    <div class="questions-preview front">
-        <p>
-        <%= res[0].question_text %>
-      </p>
-    </div>
-    <div class="questions-preview back">
-      <p>
-        <%= res[0].answer %>
-      </p>
-    </div>
-  </div>
-
-  
-  <div class="buttons">
-    <button class="pBTN" onclick="showQuestion('prev')">Previous</button>
-    <button class="nBTN" onclick="showQuestion('next')">Next</button>
-  </div>
-
-  <script src="../../src/prevNext.js"></script>
+-->
     
 <%- include("../partials/footer"); %>
+	

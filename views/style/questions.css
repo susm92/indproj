@@ -3,9 +3,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 30vh; /* Adjust this as needed for your layout */
+    height: 25vh; /* Adjust this as needed for your layout */
     background-color: aliceblue;
     border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
 .main-question:hover {
@@ -36,7 +38,7 @@
 }
 
 .questions-preview > p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 /* ############################## */
 /* ##### FOR FLIPPING CARDS ##### */
@@ -63,7 +65,7 @@
 }
 
 .card {
-    width: 100%;
+    width: 85%;
     height: 100;
     text-align: center;
     transform-style: preserve-3d;
