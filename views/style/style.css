@@ -1,5 +1,6 @@
 @import "cards.css";
 @import "questions.css";
+@import "form.css";
 
 html, #page {
     padding:0;

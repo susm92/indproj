@@ -1,6 +1,10 @@
 <%- include("../partials/header"); %>
 
-<h1></h1>
+<a href="/subjects">subjects</a> / <a href="/decks-view/<%= course.course_id %>"><%= course.name %></a> / <a href=""></a>
+
+<h1><%= course.d_name %></h1>
+
+<a href="/create-question/<%= subject %>">Add question to deck</a>
 
 <% for (const row of res) { %>
 <div class="main-question card" onclick="classList.toggle('flipcard')">
@@ -13,43 +17,5 @@
 </div>
 <% } %>
 
-<!--
-<div class="buttons">
-	<button class="pBTN" onclick="previousQuestion()">Previous</button>
-	<button class="nBTN" onclick="nextQuestion()">Next</button>
-</div>
-
-<script>
-	let indexCounter = 0;
-	
-	function toggleCard() {
-		const card = document.querySelector('.main-question');
-		card.classList.toggle('flipcard');
-		displayQuestion();
-	}
-	
-	function displayQuestion() {
-		const questionText = document.getElementById('questionText');
-		const answerText = document.getElementById('answerText');
-		
-		questionText.innerText = '<%= res[indexCounter].question_text %>';
-		answerText.innerText = '<%= res[indexCounter].answer %>';
-	}
-	
-	function nextQuestion() {
-		indexCounter = (indexCounter + 1) % <%= res.length %>;
-		displayQuestion();
-	}
-	
-	function previousQuestion() {
-		indexCounter = (indexCounter - 1 + <%= res.length %>) % <%= res.length %>;
-		displayQuestion();
-	}
-	
-	// Initial display
-	displayQuestion();
-</script>
--->
-    
 <%- include("../partials/footer"); %>
 	

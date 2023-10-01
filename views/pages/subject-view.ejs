@@ -1,7 +1,10 @@
 <%- include("../partials/header"); %>
 
-<h1>All available courses</h1>
+<a href="/subjects">subjects</a> /
 
+<h1><%= city[0].name %> - All available courses</h1>  
+
+<a href="/create-course/<%= subject %>">Add new course</a>
 
 <div class="main-cards">
     <% for (const row of res) { %>

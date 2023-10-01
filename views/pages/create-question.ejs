@@ -1,0 +1,28 @@
+<%- include("../partials/header"); %>
+
+<h1>Add question to deck</h1>
+
+<form class="label-left" action="/create-question" method="post">
+    <fieldset>
+        <legend>Create deck</legend>
+
+        <input type="hidden" name="deck_id" value="<%= subject %>">
+        <br><br>
+
+        <label for="name">Question text:</label>
+        <input type="text" name="question_text">
+
+        <br><br>
+
+        <label for="name">Answer:</label>
+        <input type="text" name="answer">
+
+        <br><br>
+
+        <input class="pBTN" type="button" onclick="javascript:history.go(-1);" value="Abort">
+        <input class="pBTN" type="submit" value="Add">
+    </fieldset>
+</form>
+    
+<%- include("../partials/footer"); %>
+	

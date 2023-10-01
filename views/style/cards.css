@@ -20,6 +20,7 @@
     font-weight: bold;
     background-color: aliceblue;
     border-radius: 20px;
+    margin-top: 0.3rem;
 }
 
 .card-preview:hover {

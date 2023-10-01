@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 const port    = 8002;
 const path    = require("path");

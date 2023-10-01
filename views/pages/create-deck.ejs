@@ -1,0 +1,25 @@
+<%- include("../partials/header"); %>
+
+<h1>Create new deck</h1>
+
+<form class="label-left" action="/create-deck" method="post">
+    <fieldset>
+        <legend>Create deck</legend>
+
+        <label>Course: <span class="form-type"><%= res.name  %></span></label>
+        <input type="hidden" name="course_id" value="<%= res.course_id %>">
+
+        <br><br>
+
+        <label for="name">Name:</label>
+        <input type="text" name="name">
+
+        <br><br>
+
+        <input class="pBTN" type="button" onclick="javascript:history.go(-1);" value="Abort">
+        <input class="pBTN" type="submit" value="Create">
+    </fieldset>
+</form>
+    
+<%- include("../partials/footer"); %>
+	

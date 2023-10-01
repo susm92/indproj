@@ -1,6 +1,10 @@
 <%- include("../partials/header"); %>
 
-<h1>Decks available</h1>
+<a href="/subjects">subjects</a> / <a href="/subject-view/<%= city.subject_id %>"><%= city.s_name %></a>
+
+<h1><%= city.name %> - Available Decks </h1>
+
+<a href="/create-deck/<%= city.course_id %>">Add new deck</a>
 
 <div class="main-cards">
     <% for (const row of res) { %>
@@ -11,5 +15,5 @@
         </div>
     <% }; %>
 </div>
-					
+
 <%- include("../partials/footer"); %>

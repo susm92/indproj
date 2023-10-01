@@ -32,6 +32,21 @@ END
 ;;
 DELIMITER ;
 
+--
+-- Procedure to show course
+--
+DROP PROCEDURE IF EXISTS show_specific_subject;
+DELIMITER ;;
+CREATE PROCEDURE show_specific_subject(
+    a_id int
+)
+BEGIN
+    SELECT * FROM subjects WHERE subject_id = a_id;
+END
+;;
+DELIMITER ;
+
+call show_specific_subject(1);
 
 --
 -- Procedure to show specific subject
@@ -60,6 +75,7 @@ BEGIN
 END
 ;;
 DELIMITER ;
+
 
 -- Just used to test querys
 -- call show_subjects();
