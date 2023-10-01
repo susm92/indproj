@@ -1,0 +1,20 @@
+<%- include("../partials/header"); %>
+
+<h1>Create new course</h1>
+
+<form class="label-left" action="/create-subject" method="post">
+    <fieldset>
+        <legend>Create course</legend>
+
+        <label>Subject name:</label>
+        <input type="text" name="subject">
+
+        <br><br>
+
+        <input class="pBTN" type="button" onclick="javascript:history.go(-1);" value="Abort">
+        <input class="nBTN" type="submit" value="Create">
+    </fieldset>
+</form>
+    
+<%- include("../partials/footer"); %>
+	

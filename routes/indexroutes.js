@@ -71,6 +71,22 @@ router.get("/specific-deck/:id", async (req, res) => {
 
 
 /* ---------------------------------------- */
+/* ------------ CREATE SUBJECT ------------ */
+/* ---------------------------------------- */
+
+router.get("/create-subject", async (req, res) => {
+
+    res.render("pages/create-subject");
+});
+
+router.post("/create-subject", urlencodedParser, async (req, res) => {
+    //console.log(JSON.stringify(req.body, null, 4));
+    await indproj.createSubject(req.body.subject);
+    res.redirect(`subjects`);
+});
+
+
+/* ---------------------------------------- */
 /* ------------ CREATE COURSE ------------- */
 /* ---------------------------------------- */
 

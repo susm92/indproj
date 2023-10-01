@@ -11,7 +11,8 @@ module.exports = {
     showCourse: showCourse,
     createDeck: createDeck,
     createQuestion: createQuestion,
-    showCourseDeck: showCourseDeck
+    showCourseDeck: showCourseDeck,
+    createSubject: createSubject
 };
 
 const mysql  = require("promise-mysql");
@@ -232,6 +233,24 @@ async function showCourseDeck(id) {
     let res;
 
     res = await db.query(sql, [id]);
+    //console.log(res);
+    console.info(`SQL: ${sql} got ${res.length} rows.`);
+
+    return res[0];
+}
+
+
+/**
+ * Show all entries in the account table.
+ *
+ * @async
+ * @returns {RowDataPacket} Resultset from the query.
+ */
+async function createSubject(name) {
+    let sql = `INSERT INTO subjects (name) VALUES (?);`;
+    let res;
+
+    res = await db.query(sql, [name]);
     //console.log(res);
     console.info(`SQL: ${sql} got ${res.length} rows.`);
 

@@ -36,3 +36,6 @@ UPDATE questions
 SET question_text = 'test1'
 WHERE question_id = 5;
 
+select * from subjects;
+
+delete from subjects where subject_id = 3;
