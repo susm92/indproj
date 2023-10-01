@@ -75,7 +75,6 @@ router.get("/specific-deck/:id", async (req, res) => {
 /* ---------------------------------------- */
 
 router.get("/create-subject", async (req, res) => {
-
     res.render("pages/create-subject");
 });
 
