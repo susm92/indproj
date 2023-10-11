@@ -1,0 +1,36 @@
+.courses {
+    display: flex;
+    flex-wrap: wrap;
+    width: 720px;
+
+    gap: 10px;
+    gap: 10px 20px; /* row-gap column gap */
+    row-gap: 10px;
+    column-gap: 20px;
+    flex-grow: 4;
+}
+
+.course-preview {
+    width: 100%;
+    height: 90px;
+    border: 4px;
+    /* border-style: solid; */
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    background-color: aliceblue;
+    border-radius: 20px;
+    margin-top: 0.3rem;
+}
+
+.course-preview:hover {
+    border: solid;
+}
+
+.course-preview > p > a {
+    color: #6b996b;
+}
+
+.course-preview > p {
+    padding: 10px;
+}

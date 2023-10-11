@@ -39,7 +39,7 @@
 }
 
 .questions-preview > p {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 /* ############################## */
 /* ##### FOR FLIPPING CARDS ##### */
@@ -90,4 +90,8 @@
 .front p, .back p {
   max-width: 90%; /* Adjust the maximum width as needed */
   text-align: center;
+}
+
+.decks {
+    background-color: lavenderblush;
 }

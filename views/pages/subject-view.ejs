@@ -6,9 +6,9 @@
 
 <a href="/create-course/<%= subject %>">Add new course</a>
 
-<div class="main-cards">
+<div class="courses">
     <% for (const row of res) { %>
-        <div class="card-preview">
+        <div class="course-preview">
             <p>
                 <a href="/decks-view/<%= row.course_id %>"><%= row.name %></a>
             </p>
