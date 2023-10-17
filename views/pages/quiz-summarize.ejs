@@ -1,9 +1,23 @@
 <%- include("../partials/header"); %>
 
-    <div class="article">
-        <h1>Welcome to StudyBuddy!</h1>
-        <p>This webapp is used for learners to create own quizlets and questions, in order for them to memorize and learn as they go on.</p>
-        <p>To get started, just click on the courses link to the left to see what courses are available.</p>
-    </div>
-					
+<a href="/subjects">subjects</a> / <a href="/decks-view/<%= quizData.course.course_id %>"><%= quizData.course.name %></a> / <a href=""></a>
+
+
+<h1>Points summary</h1>
+
+<div class="summarize">
+    <% for (let i = 0; i < quizData.questions.length; i++) { %>
+        <div class="summarize-cards" style="background-color: <%= (quizData.questions[i].answer == quizData.answer[i]) ? 'darkkhaki' : 'darksalmon' %>;">
+            <p>Question: <%= quizData.questions[i].question_text %></p>
+            <p>Correct answer: <%= quizData.questions[i].answer %></p>
+            <p>Your answer: <%= quizData.answer[i] %></p>
+        </div>
+    <% } %>
+
+    <p>Points: <%= quizData.points %> of <%= quizData.questions.length %></p>
+</div>
+
+
+
+				
 <%- include("../partials/footer"); %>

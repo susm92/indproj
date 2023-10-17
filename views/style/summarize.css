@@ -1,0 +1,15 @@
+.summarize-cards {
+    background: border-box;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    padding-top: 10px;
+    padding: 2px 0px 0px 10px;
+}
+
+.summarize-cards > p {
+    color: dimgray;
+}
+
+.summarize > p {
+    font-size: 1.2rem;
+}

@@ -3,6 +3,7 @@
 @import "form.css";
 @import "courses.css";
 @import "quiz-questions.css";
+@import "summarize.css";
 
 html, #page {
     padding:0;

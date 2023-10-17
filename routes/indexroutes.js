@@ -1,12 +1,15 @@
 "use strict";
 
 const express = require("express");
+//const session = require('express-session');
 const router = express.Router();
 const bodyParser = require("body-parser");
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const indproj = require("../src/indproj.js");
 
 module.exports = router;
+
+let quizData={};
 
 router.get("/", (req, res) => {
     res.render("pages/index");
@@ -74,20 +77,33 @@ router.get("/quiz-deck/:id", async (req, res) => {
 });
 
 router.post("/quiz-deck/:id", urlencodedParser, async (req, res) => {
-    console.log(JSON.stringify(req.body, null, 4));
-    //console.log(JSON.stringify(req.params.id));
+    let data = {}
     
-    let data = await indproj.specificDeck(req.params.id);
-    let answer = req.body.q_answer;
-    let counter = 0;
+    data.id = req.params.id;
+    data.questions = await indproj.specificDeck(data.id);
+    data.answer = req.body.q_answer;
 
-    for (let i=0; i < data.length; i++) {
-        if (data[i].answer == answer[i]) {
-            counter++;
+    quizData = data;
+
+    res.redirect(`/quiz-summarize`);
+});
+
+
+router.get("/quiz-summarize", async (req, res) => {
+    let points=0;
+    for (let i=0; i < quizData.questions.length; i++) {
+        if (quizData.questions[i].answer == quizData.answer[i]) {
+            points++;
         }
     }
 
-    console.log(counter);
+    quizData.res = await indproj.specificDeck(quizData.id);
+    quizData.course = await indproj.showCourseDeck(quizData.id);
+
+    quizData.points=points;
+
+    console.log(quizData);
+    res.render("pages/quiz-summarize", {quizData});
 });
 
 /* ---------------------------------------- */
@@ -99,11 +115,10 @@ router.get("/study-deck/:id", async (req, res) => {
     let data = {
         subject: id
     };
-
     data.res = await indproj.specificDeck(id);
     data.course = await indproj.showCourseDeck(id);
 
-    //console.log(data);
+    console.log(data);
 
     res.render("pages/study-deck", data);
 });
