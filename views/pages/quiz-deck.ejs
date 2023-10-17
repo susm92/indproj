@@ -1,0 +1,31 @@
+<%- include("../partials/header"); %>
+
+<a href="/subjects">subjects</a> / <a href="/decks-view/<%= course.course_id %>"><%= course.name %></a> / <a href=""></a>
+
+<h1><%= course.d_name %></h1>
+
+<form id="questionsForm" action="/quiz-deck/<%= course.d_id %>" method="POST">
+	<% for (const row of res) { %>
+	  <div class="main-question card">
+		<div class="questions-preview quiz-front">
+		  <p><%= row.question_text %></p>
+		</div>
+			<label for="quiz_answer"></label>
+			<p>answer: <input type="text" name="q_answer"></p>
+	  </div>
+	<% } %>
+  </form>
+
+<!-- Move the submit button outside the form -->
+<button id="submitButton" class="nBTN">Submit</button>
+
+<%- include("../partials/footer"); %>
+
+<script>
+  document.getElementById('submitButton').addEventListener('click', function() {
+    document.getElementById('questionsForm').submit();
+  });
+</script>
+
+<%- include("../partials/footer"); %>
+	

@@ -17,7 +17,7 @@ router.get("/subjects", async (req, res) => {
 
     data.res = await indproj.showSubjects();
 
-    console.log(data);
+    //console.log(data);
 
     res.render("pages/subjects", data);
 });
@@ -36,7 +36,7 @@ router.get("/subject-view/:id", async (req, res) => {
     data.city = await indproj.specificSubject(id);
 
 
-    console.log(data);
+    //console.log(data);
 
     res.render("pages/subject-view", data);
 });
@@ -50,12 +50,16 @@ router.get("/decks-view/:id", async (req, res) => {
     data.res = await indproj.showDecks(id);
     data.city = await indproj.showSubjectCourse(id);
 
-    console.log(data);
+    //console.log(data);
 
     res.render("pages/decks", data);
 });
 
-router.get("/specific-deck/:id", async (req, res) => {
+/* ---------------------------------------- */
+/* -------------- QUIZ MODE --------------- */
+/* ---------------------------------------- */
+
+router.get("/quiz-deck/:id", async (req, res) => {
     let id = req.params.id;
     let data = {
         subject: id
@@ -66,9 +70,67 @@ router.get("/specific-deck/:id", async (req, res) => {
 
     console.log(data);
 
-    res.render("pages/specific-deck", data);
+    res.render("pages/quiz-deck", data);
 });
 
+router.post("/quiz-deck/:id", urlencodedParser, async (req, res) => {
+    console.log(JSON.stringify(req.body, null, 4));
+    //console.log(JSON.stringify(req.params.id));
+    
+    let data = await indproj.specificDeck(req.params.id);
+    let answer = req.body.q_answer;
+    let counter = 0;
+
+    for (let i=0; i < data.length; i++) {
+        if (data[i].answer == answer[i]) {
+            counter++;
+        }
+    }
+
+    console.log(counter);
+});
+
+/* ---------------------------------------- */
+/* -------------- STUDY MODE -------------- */
+/* ---------------------------------------- */
+
+router.get("/study-deck/:id", async (req, res) => {
+    let id = req.params.id;
+    let data = {
+        subject: id
+    };
+
+    data.res = await indproj.specificDeck(id);
+    data.course = await indproj.showCourseDeck(id);
+
+    //console.log(data);
+
+    res.render("pages/study-deck", data);
+});
+
+/* ---------------------------------------- */
+/* ------------- CHOSEN MODE -------------- */
+/* ---------------------------------------- */
+
+router.get("/mode/:id", (req, res) => {
+    let id = req.params.id;
+    let data = {
+        subject: id
+    };
+
+    //console.log(data);
+    res.render("pages/mode", data);
+});
+
+router.post("/mode/:id", urlencodedParser, async (req, res) => {
+    //console.log(JSON.stringify(req.body, null, 4));
+
+    if (req.body.mode == 'study') {
+        res.redirect(`/study-deck/${req.body.deck_id}`);
+    } else {
+        res.redirect(`/quiz-deck/${req.body.deck_id}`);
+    }
+});
 
 /* ---------------------------------------- */
 /* ------------ CREATE SUBJECT ------------ */
@@ -97,7 +159,7 @@ router.get("/create-course/:subject", async (req, res) => {
 
     data.res = await indproj.specificSubject(subject);
 
-    console.log(data);
+    //console.log(data);
 
     res.render("pages/create-course", data);
 });
@@ -121,7 +183,7 @@ router.get("/create-deck/:subject", async (req, res) => {
 
     data.res = await indproj.showCourse(subject);
 
-    console.log(data);
+    //console.log(data);
 
     res.render("pages/create-deck", data);
 });
@@ -142,7 +204,7 @@ router.get("/create-question/:subject", async (req, res) => {
         subject: subject,
     };
 
-    console.log(data);
+    //console.log(data);
 
     res.render("pages/create-question", data);
 });
@@ -150,5 +212,5 @@ router.get("/create-question/:subject", async (req, res) => {
 router.post("/create-question", urlencodedParser, async (req, res) => {
     //console.log(JSON.stringify(req.body, null, 4));
     await indproj.createQuestion(req.body.deck_id, req.body.question_text, req.body.answer);
-    res.redirect(`specific-deck/${req.body.deck_id}`);
+    res.redirect(`study-deck/${req.body.deck_id}`);
 });

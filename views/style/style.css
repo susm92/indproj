@@ -2,6 +2,7 @@
 @import "questions.css";
 @import "form.css";
 @import "courses.css";
+@import "quiz-questions.css";
 
 html, #page {
     padding:0;

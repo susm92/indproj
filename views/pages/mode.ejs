@@ -1,0 +1,19 @@
+<%- include("../partials/header"); %>
+
+<h1> Choose which mode you want to use! </h1>
+
+<form class="form-mode" method="post">
+
+    <input type="hidden" name="deck_id" value="<%= subject %>">
+    <br><br>
+
+    <input type="radio" id="study" name="mode" value="study">
+    <label for="study">Study</label><br>
+    <input type="radio" id="quiz" name="mode" value="quiz">
+    <label for="quiz">Quiz</label><br>
+
+    <input class="pBTN" type="button" onclick="javascript:history.go(-1);" value="Abort">
+    <input class="nBTN" type="submit" value="Choose">
+</form>
+					
+<%- include("../partials/footer"); %>
