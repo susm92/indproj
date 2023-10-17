@@ -77,8 +77,8 @@ router.get("/quiz-deck/:id", async (req, res) => {
 });
 
 router.post("/quiz-deck/:id", urlencodedParser, async (req, res) => {
-    let data = {}
-    
+    let data = {};
+
     data.id = req.params.id;
     data.questions = await indproj.specificDeck(data.id);
     data.answer = req.body.q_answer;
@@ -91,6 +91,7 @@ router.post("/quiz-deck/:id", urlencodedParser, async (req, res) => {
 
 router.get("/quiz-summarize", async (req, res) => {
     let points=0;
+
     for (let i=0; i < quizData.questions.length; i++) {
         if (quizData.questions[i].answer == quizData.answer[i]) {
             points++;
@@ -112,9 +113,11 @@ router.get("/quiz-summarize", async (req, res) => {
 
 router.get("/study-deck/:id", async (req, res) => {
     let id = req.params.id;
+
     let data = {
         subject: id
     };
+
     data.res = await indproj.specificDeck(id);
     data.course = await indproj.showCourseDeck(id);
 
